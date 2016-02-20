@@ -4,10 +4,12 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.*;
 import com.foxyear.game.helpers.PlayerContactListener;
+import com.foxyear.game.helpers.PlayerController;
 import com.foxyear.game.objects.Player;
 
 
@@ -16,6 +18,7 @@ public class GameMap {
     private Body floor;
     private ShapeRenderer shapeRenderer;
     private Player player;
+    private OrthographicCamera camera;
 
     public GameMap() {
         world = new World(new Vector2(0, -10f), true);
@@ -34,6 +37,10 @@ public class GameMap {
         shapeRenderer = new ShapeRenderer();
         player = new Player(world);
         world.setContactListener(new PlayerContactListener(player));
+        Gdx.input.setInputProcessor(new PlayerController(player));
+        camera = new OrthographicCamera();
+        camera.setToOrtho(false, 800, 600);
+        shapeRenderer.setProjectionMatrix(camera.combined);
     }
 
     public void render(float delta) {
@@ -48,19 +55,6 @@ public class GameMap {
     }
 
     public void update(float delta) {
-        if (Gdx.input.isKeyJustPressed(Input.Keys.UP) && player.isGrounded()) {
-            Vector2 velocity = player.getBody().getLinearVelocity();
-            velocity.add(0, 6);
-            player.setGrounded(false);
-            player.getBody().setLinearVelocity(velocity);
-            //player.getBody().applyForceToCenter(new Vector2(0, 200), true);
-        }
-        if (Gdx.input.isKeyPressed(Input.Keys.LEFT)) {
-            player.getBody().applyForceToCenter(new Vector2(-10, 0), true);
-        }
-        if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)) {
-            player.getBody().applyForceToCenter(new Vector2(10, 0), true);
-        }
         world.step(delta, 10, 10);
     }
 

@@ -51,4 +51,21 @@ public class Player {
         return grounded;
     }
 
+    public void left() {
+        body.applyForceToCenter(new Vector2(-10, 0), true);
+    }
+
+    public void right() {
+        body.applyForceToCenter(new Vector2(10, 0), true);
+    }
+
+    public void jump() {
+        if (isGrounded()) {
+            Vector2 velocity = body.getLinearVelocity();
+            velocity.add(0, 6);
+            setGrounded(false);
+            body.setLinearVelocity(velocity);
+        }
+    }
+
 }
