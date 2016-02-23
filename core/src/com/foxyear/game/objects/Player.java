@@ -12,6 +12,9 @@ public class Player {
     private final static float HEIGHT = 1;
     private Body body;
     private boolean grounded;
+    private boolean left;
+    private boolean right;
+    private boolean jump;
 
     public Player(World world) {
         BodyDef bodyDef = new BodyDef();
@@ -26,6 +29,9 @@ public class Player {
         body = world.createBody(bodyDef);
         body.createFixture(fixtureDef);
         grounded = false;
+        left = false;
+        right = false;
+        jump = false;
     }
 
     public void render(ShapeRenderer renderer) {
@@ -37,6 +43,21 @@ public class Player {
                       WIDTH * MainClass.PIXELSINMETER,
                       HEIGHT * MainClass.PIXELSINMETER);
         renderer.setColor(color);
+    }
+
+    public void update() {
+        if (left) {
+            body.applyForceToCenter(new Vector2(-10, 0), true);
+        }
+        if (right) {
+            body.applyForceToCenter(new Vector2(10, 0), true);
+        }
+        if (jump && isGrounded()) {
+            setGrounded(false);
+            Vector2 velocity = body.getLinearVelocity();
+            velocity.add(0, 6);
+            body.setLinearVelocity(velocity);
+        }
     }
 
     public Body getBody() {
@@ -52,20 +73,27 @@ public class Player {
     }
 
     public void left() {
-        body.applyForceToCenter(new Vector2(-10, 0), true);
+        left = true;
+    }
+
+    public void leftReleased() {
+        left = false;
     }
 
     public void right() {
-        body.applyForceToCenter(new Vector2(10, 0), true);
+        right = true;
+    }
+
+    public void rightReleased() {
+        right = false;
     }
 
     public void jump() {
-        if (isGrounded()) {
-            Vector2 velocity = body.getLinearVelocity();
-            velocity.add(0, 6);
-            setGrounded(false);
-            body.setLinearVelocity(velocity);
-        }
+        jump = true;
+    }
+
+    public void jumpReleased() {
+        jump = false;
     }
 
 }

@@ -26,4 +26,21 @@ public class PlayerController extends InputAdapter {
         }
         return true;
     }
+
+    @Override
+    public boolean keyUp(int keycode) {
+        switch (keycode) {
+            case Input.Keys.LEFT:
+                player.leftReleased();
+                break;
+            case Input.Keys.RIGHT:
+                player.rightReleased();
+                break;
+            case Input.Keys.UP:
+                player.jumpReleased();
+                break;
+        }
+        return true;
+    }
+
 }
