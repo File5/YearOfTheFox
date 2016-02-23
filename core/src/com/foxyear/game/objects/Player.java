@@ -18,7 +18,7 @@ public class Player {
 
     public Player(World world) {
         BodyDef bodyDef = new BodyDef();
-        bodyDef.position.set(2, 2);
+        bodyDef.position.set(2f, 2f);
         bodyDef.type = BodyDef.BodyType.DynamicBody;
         FixtureDef fixtureDef = new FixtureDef();
         fixtureDef.friction = 0.3f;
@@ -28,6 +28,7 @@ public class Player {
         fixtureDef.density = 1.0f;
         body = world.createBody(bodyDef);
         body.createFixture(fixtureDef);
+        shape.dispose();
         grounded = false;
         left = false;
         right = false;
@@ -38,7 +39,7 @@ public class Player {
         Vector2 pos = body.getPosition();
         Color color = renderer.getColor();
         renderer.setColor(Color.WHITE);
-        renderer.rect(pos.x * MainClass.PIXELSINMETER,
+        renderer.rect((pos.x - WIDTH / 2) * MainClass.PIXELSINMETER,
                       pos.y * MainClass.PIXELSINMETER,
                       WIDTH * MainClass.PIXELSINMETER,
                       HEIGHT * MainClass.PIXELSINMETER);
