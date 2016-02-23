@@ -20,7 +20,8 @@ public class GameMap {
     private Player player;
     private OrthographicCamera camera;
     private Viewport viewport;
-    Player player1;
+    private Player player1;
+    private Box2DDebugRenderer debugRenderer;
 
     public GameMap() {
         world = new World(new Vector2(0, -10f), true);
@@ -44,16 +45,27 @@ public class GameMap {
         camera = new OrthographicCamera();
         camera.setToOrtho(false);
         viewport = new ScreenViewport(camera);
+        debugRenderer = new Box2DDebugRenderer();
     }
 
     public void resize(int width, int height) {
-        camera.setToOrtho(false, width, height);
+        // FOR DEBUG
+        float aspectRatio = (float) width / (float) height;
+        camera = new OrthographicCamera(10f * aspectRatio, 10f);
+
+        //camera.setToOrtho(false, width, height);
         viewport.update(width, height);
     }
 
     public void render(float delta) {
-        Gdx.gl.glClearColor(1, 0, 0, 1);
+        Gdx.gl.glClearColor(135f / 255, 206f / 255, 235f / 255, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+
+        // FOR DEBUG
+        //debugRenderer.render(world, camera.combined);
+        MainClass.PIXELSINMETER = 1;
+
+        //*
         shapeRenderer.setProjectionMatrix(camera.combined);
         shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
         shapeRenderer.setColor(Color.GREEN);
@@ -65,15 +77,17 @@ public class GameMap {
         player.render(shapeRenderer);
         player1.render(shapeRenderer);
         shapeRenderer.setColor(Color.BLUE);
-        pos = player.getBody().getPosition();
-        shapeRenderer.circle(pos.x * MainClass.PIXELSINMETER, pos.y * MainClass.PIXELSINMETER, 5);
+        //pos = player.getBody().getPosition();
+        //shapeRenderer.circle(pos.x * MainClass.PIXELSINMETER, pos.y * MainClass.PIXELSINMETER, 0.5f);
         shapeRenderer.end();
+        //*/
     }
 
     public void update(float delta) {
         player.update();
         Vector2 pos = player.getBody().getPosition();
-        camera.position.x = pos.x * MainClass.PIXELSINMETER;
+        camera.position.x = pos.x;
+        //camera.position.x = pos.x * MainClass.PIXELSINMETER;
         //camera.position.y = pos.y * MainClass.PIXELSINMETER;
         camera.update();
         world.step(delta, 10, 10);

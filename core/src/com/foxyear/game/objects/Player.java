@@ -47,8 +47,8 @@ public class Player {
         Color color = renderer.getColor();
         renderer.setColor(Color.WHITE);
         renderer.rect(
-                pos.x * MainClass.PIXELSINMETER,
-                pos.y * MainClass.PIXELSINMETER,
+                (pos.x - WIDTH / 2) * MainClass.PIXELSINMETER,
+                (pos.y - HEIGHT / 2) * MainClass.PIXELSINMETER,
                 WIDTH / 2,
                 HEIGHT / 2,
                 WIDTH,

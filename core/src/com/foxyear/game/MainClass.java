@@ -5,7 +5,7 @@ import com.foxyear.game.screens.GameScreen;
 
 
 public class MainClass extends Game {
-	public static final int PIXELSINMETER = 100;
+	public static int PIXELSINMETER = 100;
 
 	@Override
 	public void create() {
