@@ -15,7 +15,8 @@ public class PlayerContactListener implements ContactListener {
 
     @Override
     public void beginContact(Contact contact) {
-        if (contact.getFixtureA().getBody().getUserData().toString().equals("GROUND")) {
+        Object userData = contact.getFixtureA().getBody().getUserData();
+        if (userData != null && userData.toString().equals("GROUND")) {
             player.setGrounded(true);
         }
     }

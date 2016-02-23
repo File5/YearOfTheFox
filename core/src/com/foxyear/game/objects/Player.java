@@ -20,6 +20,7 @@ public class Player {
         BodyDef bodyDef = new BodyDef();
         bodyDef.position.set(2f, 2f);
         bodyDef.type = BodyDef.BodyType.DynamicBody;
+        //bodyDef.fixedRotation = true;
         FixtureDef fixtureDef = new FixtureDef();
         fixtureDef.friction = 0.3f;
         PolygonShape shape = new PolygonShape();
@@ -35,14 +36,33 @@ public class Player {
         jump = false;
     }
 
+    public Player(World world, Vector2 pos) {
+        this(world);
+        body.getPosition().set(pos);
+    }
+
     public void render(ShapeRenderer renderer) {
         Vector2 pos = body.getPosition();
+        float angle = (float) Math.toDegrees(body.getAngle());
         Color color = renderer.getColor();
         renderer.setColor(Color.WHITE);
+        renderer.rect(
+                pos.x * MainClass.PIXELSINMETER,
+                pos.y * MainClass.PIXELSINMETER,
+                WIDTH / 2,
+                HEIGHT / 2,
+                WIDTH,
+                HEIGHT,
+                MainClass.PIXELSINMETER,
+                MainClass.PIXELSINMETER,
+                angle
+        );
+        /*
         renderer.rect((pos.x - WIDTH / 2) * MainClass.PIXELSINMETER,
                       pos.y * MainClass.PIXELSINMETER,
                       WIDTH * MainClass.PIXELSINMETER,
                       HEIGHT * MainClass.PIXELSINMETER);
+        //*/
         renderer.setColor(color);
     }
 

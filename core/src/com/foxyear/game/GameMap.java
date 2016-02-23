@@ -20,6 +20,7 @@ public class GameMap {
     private Player player;
     private OrthographicCamera camera;
     private Viewport viewport;
+    Player player1;
 
     public GameMap() {
         world = new World(new Vector2(0, -10f), true);
@@ -37,6 +38,7 @@ public class GameMap {
         floor.setUserData("GROUND");
         shapeRenderer = new ShapeRenderer();
         player = new Player(world);
+        player1 = new Player(world, new Vector2(2f, 4f));
         world.setContactListener(new PlayerContactListener(player));
         Gdx.input.setInputProcessor(new PlayerController(player));
         camera = new OrthographicCamera();
@@ -57,13 +59,14 @@ public class GameMap {
         shapeRenderer.setColor(Color.GREEN);
         Vector2 pos = floor.getPosition();
         shapeRenderer.rect(-10f * MainClass.PIXELSINMETER,
-                           pos.y * MainClass.PIXELSINMETER,
+                           -0.5f * MainClass.PIXELSINMETER,
                            MainClass.PIXELSINMETER * 10f * 2,
                            MainClass.PIXELSINMETER * 0.5f * 2);
         player.render(shapeRenderer);
+        player1.render(shapeRenderer);
         shapeRenderer.setColor(Color.BLUE);
         pos = player.getBody().getPosition();
-        shapeRenderer.rect(pos.x * MainClass.PIXELSINMETER, pos.y * MainClass.PIXELSINMETER, 10, 10);
+        shapeRenderer.circle(pos.x * MainClass.PIXELSINMETER, pos.y * MainClass.PIXELSINMETER, 5);
         shapeRenderer.end();
     }
 
