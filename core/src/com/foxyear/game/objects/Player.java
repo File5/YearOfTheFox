@@ -8,8 +8,10 @@ import com.foxyear.game.MainClass;
 
 
 public class Player {
-    private final static float WIDTH = 1;
-    private final static float HEIGHT = 1;
+    public static final String TAG = "PLAYER";
+    private static final float WIDTH = 1;
+    private static final float HEIGHT = 1;
+
     private Body body;
     private boolean grounded;
     private boolean left;
@@ -28,9 +30,19 @@ public class Player {
         fixtureDef.shape = shape;
         fixtureDef.density = 1.0f;
 
+        FixtureDef groundFixture = new FixtureDef();
+        groundFixture.isSensor = true;
+        EdgeShape edgeShape = new EdgeShape();
+        edgeShape.set(new Vector2(-WIDTH / 4 , -HEIGHT / 2), new Vector2(WIDTH / 4 , -HEIGHT / 2));
+        groundFixture.shape = edgeShape;
+
         body = world.createBody(bodyDef);
-        body.createFixture(fixtureDef);
+        body.createFixture(fixtureDef).setUserData(TAG);
+        body.createFixture(groundFixture).setUserData(TAG + "GROUND");
+        //body.setUserData(this);
+
         shape.dispose();
+
         grounded = false;
         left = false;
         right = false;
@@ -58,6 +70,15 @@ public class Player {
                 MainClass.PIXELSINMETER,
                 angle
         );
+        renderer.setColor(Color.BLUE);
+        /*
+        renderer.line(
+                (pos.x - WIDTH / 2) * MainClass.PIXELSINMETER,
+                (pos.y - HEIGHT / 2) * MainClass.PIXELSINMETER,
+                (pos.x + WIDTH / 2) * MainClass.PIXELSINMETER,
+                (pos.y - HEIGHT / 2) * MainClass.PIXELSINMETER
+        );
+        */
         /*
         renderer.rect((pos.x - WIDTH / 2) * MainClass.PIXELSINMETER,
                       pos.y * MainClass.PIXELSINMETER,

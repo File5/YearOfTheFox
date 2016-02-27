@@ -3,14 +3,11 @@ package com.foxyear.game.objects;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.*;
 
-/**
- * Created by Xoul on 27.02.2016.
- */
-
-
 public class Floor {
+    public static final String TAG = "GROUND";
     private Body floor;
-   public  Floor(World world){
+
+    public Floor(World world) {
         BodyDef floorDef = new BodyDef();
         floorDef.position.set(0f, 0f);
         floorDef.type = BodyDef.BodyType.StaticBody;
@@ -21,16 +18,10 @@ public class Floor {
         floorFixture.density = 1.0f;
         floorFixture.friction = 0.3f;
         floor = world.createBody(floorDef);
-        floor.createFixture(floorFixture);
-        floor.setUserData(this);
+        floor.createFixture(floorFixture).setUserData(TAG);
     }
 
-    @Override
-    public String toString() {
-        return "GROUND";
-
-    }
-    public Vector2 getPosition(){
+    public Vector2 getPosition() {
         return floor.getPosition();
     }
 }

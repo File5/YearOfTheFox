@@ -27,7 +27,6 @@ public class PlayerController extends InputAdapter {
                 player.getBody().setTransform(2f,3f,0);
                 player.setGrounded(true);
                 player.jump();
-
                 break;
         }
         return true;

@@ -15,14 +15,11 @@ import com.foxyear.game.objects.Floor;
 import com.foxyear.game.objects.Player;
 import com.foxyear.game.scene.HUD;
 
-
 public class GameMap {
-    public static final  int V_WIDTH = 800;
-    public static final  int V_HEIGTH = 400;
-
+    public static final int V_WIDTH = 800;
+    public static final int V_HEIGTH = 400;
 
     private World world;
-
     private Floor floor;
     private ShapeRenderer shapeRenderer;
     private Player player;
@@ -35,10 +32,8 @@ public class GameMap {
 
     public GameMap() {
         world = new World(new Vector2(0, -10f), true);
-
         shapeRenderer = new ShapeRenderer();
         player = new Player(world);
-        player.getBody().setUserData("PLAYER");
         player1 = new Player(world, new Vector2(2f, 4f));
         world.setContactListener(new PlayerContactListener(player));
         Gdx.input.setInputProcessor(new PlayerController(player));
@@ -47,11 +42,8 @@ public class GameMap {
         viewport = new ScreenViewport(camera);
         debugRenderer = new Box2DDebugRenderer();
         floor = new Floor(world);
-
         batch = new SpriteBatch();
         hud = new HUD(batch);
-
-
     }
 
     public void resize(int width, int height) {
@@ -95,8 +87,9 @@ public class GameMap {
         player.update();
         Vector2 pos = player.getBody().getPosition();
         camera.position.x = pos.x;
-        //camera.position.x = pos.x * MainClass.PIXELSINMETER;
-        camera.position.y = pos.y + 3f;
+        camera.position.x = pos.x * MainClass.PIXELSINMETER;
+        camera.position.y = pos.y;
+        //camera.position.y = pos.y + 3f;
         camera.update();
         world.step(delta, 10, 10);
     }
