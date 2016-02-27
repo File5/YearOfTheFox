@@ -60,8 +60,8 @@ public class Player {
         Color color = renderer.getColor();
         renderer.setColor(Color.WHITE);
         renderer.rect(
-                (pos.x - WIDTH / 2) * MainClass.PIXELSINMETER,
-                (pos.y - HEIGHT / 2) * MainClass.PIXELSINMETER,
+                (pos.x) * MainClass.PIXELSINMETER,
+                (pos.y) * MainClass.PIXELSINMETER,
                 WIDTH / 2,
                 HEIGHT / 2,
                 WIDTH,
@@ -71,20 +71,17 @@ public class Player {
                 angle
         );
         renderer.setColor(Color.BLUE);
-        /*
-        renderer.line(
-                (pos.x - WIDTH / 2) * MainClass.PIXELSINMETER,
-                (pos.y - HEIGHT / 2) * MainClass.PIXELSINMETER,
-                (pos.x + WIDTH / 2) * MainClass.PIXELSINMETER,
-                (pos.y - HEIGHT / 2) * MainClass.PIXELSINMETER
+        renderer.rect(
+                (pos.x) * MainClass.PIXELSINMETER,
+                (pos.y) * MainClass.PIXELSINMETER,
+                WIDTH / 2,
+                HEIGHT / 2,
+                WIDTH,
+                0.1f,
+                MainClass.PIXELSINMETER,
+                MainClass.PIXELSINMETER,
+                angle
         );
-        */
-        /*
-        renderer.rect((pos.x - WIDTH / 2) * MainClass.PIXELSINMETER,
-                      pos.y * MainClass.PIXELSINMETER,
-                      WIDTH * MainClass.PIXELSINMETER,
-                      HEIGHT * MainClass.PIXELSINMETER);
-        //*/
         renderer.setColor(color);
     }
 

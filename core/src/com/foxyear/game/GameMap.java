@@ -48,9 +48,10 @@ public class GameMap {
 
     public void resize(int width, int height) {
         // FOR DEBUG
+        //MainClass.PIXELSINMETER = 2;
         float aspectRatio = (float) width / (float) height;
-        camera = new OrthographicCamera(10f * aspectRatio, 10f);
-
+        //camera = new OrthographicCamera(10f * aspectRatio, 10f);
+        camera = new OrthographicCamera(10f * MainClass.PIXELSINMETER * aspectRatio, 10f * MainClass.PIXELSINMETER);
         //camera.setToOrtho(false, width, height);
         viewport.update(width, height);
     }
@@ -61,22 +62,16 @@ public class GameMap {
 
         // FOR DEBUG
         //debugRenderer.render(world, camera.combined);
-        MainClass.PIXELSINMETER = 1;
 
         //*
         shapeRenderer.setProjectionMatrix(camera.combined);
         shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
-        shapeRenderer.setColor(Color.GREEN);
-        Vector2 pos = floor.getPosition();
-        shapeRenderer.rect(-10f * MainClass.PIXELSINMETER,
-                           -0.5f * MainClass.PIXELSINMETER,
-                           MainClass.PIXELSINMETER * 10f * 2,
-                           MainClass.PIXELSINMETER * 0.5f * 2);
+        floor.render(shapeRenderer);
         player.render(shapeRenderer);
         player1.render(shapeRenderer);
         shapeRenderer.setColor(Color.BLUE);
-        //pos = player.getBody().getPosition();
-        //shapeRenderer.circle(pos.x * MainClass.PIXELSINMETER, pos.y * MainClass.PIXELSINMETER, 0.5f);
+        Vector2 pos = player.getBody().getPosition();
+        shapeRenderer.circle(pos.x * MainClass.PIXELSINMETER, pos.y * MainClass.PIXELSINMETER, 0.05f * MainClass.PIXELSINMETER);
         shapeRenderer.end();
         //*/
         batch.setProjectionMatrix(hud.stage.getCamera().combined);
