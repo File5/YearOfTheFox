@@ -1,11 +1,14 @@
 package com.foxyear.game.screens;
 
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.foxyear.game.GameMap;
+import com.foxyear.game.scene.HUD;
 
 
 public class GameScreen implements Screen {
     private GameMap map;
+    private HUD hud;
 
     @Override
     public void show() {

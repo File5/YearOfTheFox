@@ -27,6 +27,7 @@ public class Player {
         shape.setAsBox(WIDTH / 2, HEIGHT / 2);
         fixtureDef.shape = shape;
         fixtureDef.density = 1.0f;
+
         body = world.createBody(bodyDef);
         body.createFixture(fixtureDef);
         shape.dispose();
