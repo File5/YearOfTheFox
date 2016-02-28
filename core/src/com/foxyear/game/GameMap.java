@@ -9,6 +9,7 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.*;
 import com.badlogic.gdx.utils.viewport.*;
+import com.foxyear.game.helpers.AssetHelpers;
 import com.foxyear.game.helpers.PlayerContactListener;
 import com.foxyear.game.helpers.PlayerController;
 import com.foxyear.game.objects.Floor;
@@ -16,6 +17,7 @@ import com.foxyear.game.objects.Player;
 import com.foxyear.game.scene.HUD;
 
 public class GameMap {
+
     public static final int V_WIDTH = 800;
     public static final int V_HEIGTH = 400;
 
@@ -30,7 +32,13 @@ public class GameMap {
     public HUD hud;
     private SpriteBatch batch;
 
+    public int gameHeight;
+    public int gameWidth;
+
     public GameMap() {
+        gameHeight = Gdx.graphics.getHeight();
+        gameWidth = Gdx.graphics.getWidth();
+
         world = new World(new Vector2(0, -10f), true);
         shapeRenderer = new ShapeRenderer();
         player = new Player(world);
@@ -64,6 +72,11 @@ public class GameMap {
         //debugRenderer.render(world, camera.combined);
 
         //*
+        batch.begin();
+        batch.disableBlending();
+        batch.draw(AssetHelpers.bg, 0, 0, gameWidth, gameHeight);
+        batch.end();
+
         shapeRenderer.setProjectionMatrix(camera.combined);
         shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
         floor.render(shapeRenderer);
