@@ -4,7 +4,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.*;
-import com.foxyear.game.MainClass;
+import com.foxyear.game.YearOfTheFoxGame;
 
 
 public class Player {
@@ -22,7 +22,7 @@ public class Player {
         BodyDef bodyDef = new BodyDef();
         bodyDef.position.set(2f, 2f);
         bodyDef.type = BodyDef.BodyType.DynamicBody;
-        //bodyDef.fixedRotation = true;
+        bodyDef.fixedRotation = true;
         FixtureDef fixtureDef = new FixtureDef();
         fixtureDef.friction = 0.3f;
         PolygonShape shape = new PolygonShape();
@@ -60,26 +60,26 @@ public class Player {
         Color color = renderer.getColor();
         renderer.setColor(Color.WHITE);
         renderer.rect(
-                (pos.x) * MainClass.PIXELSINMETER,
-                (pos.y) * MainClass.PIXELSINMETER,
+                (pos.x) * YearOfTheFoxGame.PIXELSINMETER,
+                (pos.y) * YearOfTheFoxGame.PIXELSINMETER,
                 WIDTH / 2,
                 HEIGHT / 2,
                 WIDTH,
                 HEIGHT,
-                MainClass.PIXELSINMETER,
-                MainClass.PIXELSINMETER,
+                YearOfTheFoxGame.PIXELSINMETER,
+                YearOfTheFoxGame.PIXELSINMETER,
                 angle
         );
         renderer.setColor(Color.BLUE);
         renderer.rect(
-                (pos.x) * MainClass.PIXELSINMETER,
-                (pos.y) * MainClass.PIXELSINMETER,
+                (pos.x) * YearOfTheFoxGame.PIXELSINMETER,
+                (pos.y) * YearOfTheFoxGame.PIXELSINMETER,
                 WIDTH / 2,
                 HEIGHT / 2,
                 WIDTH,
                 0.1f,
-                MainClass.PIXELSINMETER,
-                MainClass.PIXELSINMETER,
+                YearOfTheFoxGame.PIXELSINMETER,
+                YearOfTheFoxGame.PIXELSINMETER,
                 angle
         );
         renderer.setColor(color);

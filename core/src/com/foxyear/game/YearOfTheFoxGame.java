@@ -6,7 +6,7 @@ import com.foxyear.game.helpers.AssetHelpers;
 import com.foxyear.game.screens.GameScreen;
 
 
-public class MainClass extends Game {
+public class YearOfTheFoxGame extends Game {
 	public static int PIXELSINMETER = 100;
 
 	@Override

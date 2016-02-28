@@ -4,7 +4,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.*;
-import com.foxyear.game.MainClass;
+import com.foxyear.game.YearOfTheFoxGame;
 
 public class Floor {
     public static final String TAG = "GROUND";
@@ -35,14 +35,14 @@ public class Floor {
         Color color = renderer.getColor();
         renderer.setColor(Color.GREEN);
         renderer.rect(
-                (pos.x) * MainClass.PIXELSINMETER,
-                (pos.y) * MainClass.PIXELSINMETER,
+                (pos.x) * YearOfTheFoxGame.PIXELSINMETER,
+                (pos.y) * YearOfTheFoxGame.PIXELSINMETER,
                 WIDTH / 2,
                 HEIGHT / 2,
                 WIDTH,
                 HEIGHT,
-                MainClass.PIXELSINMETER,
-                MainClass.PIXELSINMETER,
+                YearOfTheFoxGame.PIXELSINMETER,
+                YearOfTheFoxGame.PIXELSINMETER,
                 0
         );
         renderer.setColor(color);

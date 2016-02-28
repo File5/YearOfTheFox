@@ -12,17 +12,17 @@ public class AssetHelpers {
     public static Texture texture;
     public static TextureRegion bg;
 
-    public static TextureRegion player;
+    public static TextureRegion playertex;
 
     public static void load() {
-        texture = new Texture("date/texture.png");
+        texture = new Texture("date/TextureMap.png");
         texture.setFilter(TextureFilter.Nearest, TextureFilter.Nearest);
 
         bg = new TextureRegion(texture, 0,0,75,40);
         bg.flip(false, false);
 
-        player = new TextureRegion(texture, 80, 0, 15, 40);
-        player.flip(false, false);
+        playertex = new TextureRegion(texture, 280, 0, 110, 100);
+        playertex.flip(false, false);
     }
 
     public static void dispose(){
