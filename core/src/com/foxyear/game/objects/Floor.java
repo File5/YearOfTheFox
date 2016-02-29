@@ -1,5 +1,8 @@
 package com.foxyear.game.objects;
 
+import aurelienribon.bodyeditor.BodyEditorLoader;
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector2;
@@ -24,6 +27,22 @@ public class Floor {
         floorFixture.friction = 0.3f;
         floor = world.createBody(floorDef);
         floor.createFixture(floorFixture).setUserData(TAG);
+    }
+
+    public Floor(World world, FileHandle fileHandle) {
+        BodyEditorLoader loader = new BodyEditorLoader(fileHandle);
+        BodyDef bodyDef = new BodyDef();
+        bodyDef.type = BodyDef.BodyType.StaticBody;
+        FixtureDef fixtureDef = new FixtureDef();
+        fixtureDef.density = 1f;
+        fixtureDef.friction = 0.3f;
+        floor = world.createBody(bodyDef);
+        loader.attachFixture(floor, "ground", fixtureDef, 1f);
+        for (Fixture fixture : floor.getFixtureList()) {
+            fixture.setUserData(TAG);
+        }
+        Vector2 posBody = loader.getOrigin("ground", 1f).cpy();
+        floor.getPosition().set(0f, 0f);
     }
 
     public Vector2 getPosition() {
