@@ -12,7 +12,7 @@ public class AssetHelpers {
     public static Texture texture;
     public static TextureRegion bg;
 
-    public static TextureRegion playertex;
+    public static Texture playertex;
 
     public static void load() {
         texture = new Texture("date/TextureMap.png");
@@ -21,8 +21,8 @@ public class AssetHelpers {
         bg = new TextureRegion(texture, 0,0,75,40);
         bg.flip(false, false);
 
-        playertex = new TextureRegion(texture, 280, 0, 110, 100);
-        playertex.flip(false, false);
+        playertex = new Texture("img/pers1.png");
+
     }
 
     public static void dispose(){

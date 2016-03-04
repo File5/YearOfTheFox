@@ -9,7 +9,7 @@ import com.foxyear.game.YearOfTheFoxGame;
 
 public class Player {
     public static final String TAG = "PLAYER";
-    private static final float WIDTH = 1;
+    private static final float WIDTH = 0.5f;
     private static final float HEIGHT = 1;
 
     private Body body;
@@ -28,7 +28,7 @@ public class Player {
         PolygonShape shape = new PolygonShape();
         shape.setAsBox(WIDTH / 2, HEIGHT / 2);
         fixtureDef.shape = shape;
-        fixtureDef.density = 1.0f;
+        fixtureDef.density = 3.0f;
 
         FixtureDef groundFixture = new FixtureDef();
         groundFixture.isSensor = true;

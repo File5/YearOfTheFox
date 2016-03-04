@@ -69,15 +69,17 @@ public class GameRenderer {
 
         batch.enableBlending();
         batch.draw(background, 0, 0, 960, 600);
+        batch.draw(background, -960, 0, 960, 600);
+        batch.draw(background, 960, 0, 960, 600);
         //TODO: fix this
-        batch.draw(AssetHelpers.playertex, player.getBody().getPosition().x * YearOfTheFoxGame.PIXELSINMETER - AssetHelpers.playertex.getRegionWidth() / 2
-                , player.getBody().getPosition().y * YearOfTheFoxGame.PIXELSINMETER - AssetHelpers.playertex.getRegionHeight() / 2);
+        batch.draw(AssetHelpers.playertex, player.getBody().getPosition().x * YearOfTheFoxGame.PIXELSINMETER-25
+                , player.getBody().getPosition().y * YearOfTheFoxGame.PIXELSINMETER-50 , 50 , 100);
         //pos = world.test.getBody().getPosition();
         //world.test.draw(batch);
         //batch.draw(world.test.getTexture(), pos.x * YearOfTheFoxGame.PIXELSINMETER, pos.y * YearOfTheFoxGame.PIXELSINMETER);
         batch.end();
         //*/
-        batch.setProjectionMatrix(hud.stage.getCamera().combined);
+    //    batch.setProjectionMatrix(hud.stage.getCamera().combined);
         hud.stage.draw();
         pos = player.getBody().getPosition();
        // camera.position.x = pos.x;
