@@ -37,12 +37,12 @@ public class Floor {
         fixtureDef.density = 1f;
         fixtureDef.friction = 0.3f;
         floor = world.createBody(bodyDef);
-        loader.attachFixture(floor, "ground", fixtureDef, 1f);
+        loader.attachFixture(floor, "ground", fixtureDef, 9.6f);
         for (Fixture fixture : floor.getFixtureList()) {
             fixture.setUserData(TAG);
         }
         Vector2 posBody = loader.getOrigin("ground", 1f).cpy();
-        floor.getPosition().set(0f, 0f);
+        floor.getPosition().set(4.8f, 0f);
     }
 
     public Vector2 getPosition() {

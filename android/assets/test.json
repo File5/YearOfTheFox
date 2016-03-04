@@ -1,0 +1,1 @@
+{"rigidBodies":[{"name":"test","imagePath":"img/test.png","origin":{"x":0.5,"y":0},"polygons":[],"circles":[{"cx":0.5,"cy":0.5,"r":0.5}],"shapes":[{"type":"CIRCLE","vertices":[{"x":0.5,"y":0.5},{"x":0.5,"y":0}]}]}],"dynamicObjects":[]}

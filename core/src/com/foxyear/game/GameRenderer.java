@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector2;
@@ -26,6 +27,7 @@ public class GameRenderer {
     private Player player;
     public int gameHeight;
     public int gameWidth;
+    Texture background;
 
     public GameRenderer(GameWorld world) {
         this.world = world;
@@ -38,11 +40,12 @@ public class GameRenderer {
         hud = new HUD(batch);
         gameHeight = Gdx.graphics.getHeight();
         gameWidth = Gdx.graphics.getWidth();
+        background = new Texture("img/testMap.png");
     }
 
     public void resize(int width, int height) {
         float aspectRatio = (float) width / (float) height;
-        camera = new OrthographicCamera(10f * YearOfTheFoxGame.PIXELSINMETER * aspectRatio, 10f * YearOfTheFoxGame.PIXELSINMETER);
+        camera = new OrthographicCamera(5f * YearOfTheFoxGame.PIXELSINMETER * aspectRatio, 5f * YearOfTheFoxGame.PIXELSINMETER);
         viewport.update(width, height);
     }
 
@@ -58,16 +61,20 @@ public class GameRenderer {
 
         shapeRenderer.setProjectionMatrix(camera.combined);
         shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
-        world.floor.render(shapeRenderer);
+        //world.floor.render(shapeRenderer);
         Vector2 pos;
         shapeRenderer.end();
         batch.setProjectionMatrix(camera.combined);
         batch.begin();
 
         batch.enableBlending();
+        batch.draw(background, 0, 0, 960, 600);
         //TODO: fix this
         batch.draw(AssetHelpers.playertex, player.getBody().getPosition().x * YearOfTheFoxGame.PIXELSINMETER - AssetHelpers.playertex.getRegionWidth() / 2
                 , player.getBody().getPosition().y * YearOfTheFoxGame.PIXELSINMETER - AssetHelpers.playertex.getRegionHeight() / 2);
+        //pos = world.test.getBody().getPosition();
+        //world.test.draw(batch);
+        //batch.draw(world.test.getTexture(), pos.x * YearOfTheFoxGame.PIXELSINMETER, pos.y * YearOfTheFoxGame.PIXELSINMETER);
         batch.end();
         //*/
         batch.setProjectionMatrix(hud.stage.getCamera().combined);
