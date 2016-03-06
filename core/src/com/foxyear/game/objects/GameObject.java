@@ -11,6 +11,7 @@ import com.foxyear.game.YearOfTheFoxGame;
 public class GameObject extends Sprite {
     protected Body body;
 
+
     /**
      * Creates a object from JSON with specified parameters
      * @param world physical world to create object in.

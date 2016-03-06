@@ -136,4 +136,10 @@ public class Player {
         jump = false;
     }
 
+    public float getX(){
+        return body.getPosition().x;
+    }
+    public float getY(){
+        return body.getPosition().y;
+    }
 }

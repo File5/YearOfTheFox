@@ -66,6 +66,10 @@ public class GameRenderer {
         batch.draw(AssetHelpers.playertex, player.getBody().getPosition().x * YearOfTheFoxGame.PIXELSINMETER-25
                 , player.getBody().getPosition().y * YearOfTheFoxGame.PIXELSINMETER-50 , 50 , 100);
         world.test.draw(batch);
+        batch.draw(AssetHelpers.enem,world.enemy.getX()* YearOfTheFoxGame.PIXELSINMETER-50,world.enemy.getY()* YearOfTheFoxGame.PIXELSINMETER-50,100,100);
+        //pos = world.test.getBody().getPosition();
+        //world.test.draw(batch);
+        //batch.draw(world.test.getTexture(), pos.x * YearOfTheFoxGame.PIXELSINMETER, pos.y * YearOfTheFoxGame.PIXELSINMETER);
         batch.end();
 //        batch.setProjectionMatrix(hud.stage.getCamera().combined);
         hud.stage.draw();
