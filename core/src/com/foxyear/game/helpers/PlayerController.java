@@ -2,6 +2,7 @@ package com.foxyear.game.helpers;
 
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputAdapter;
+import com.foxyear.game.GameWorld;
 import com.foxyear.game.objects.Player;
 
 public class PlayerController extends InputAdapter {
@@ -28,6 +29,8 @@ public class PlayerController extends InputAdapter {
                 player.setGrounded(true);
                 player.jump();
                 break;
+            default:
+                return false;
         }
         return true;
     }

@@ -63,9 +63,14 @@ public class GameRenderer {
         batch.draw(background, -960, 0, 960, 600);
         batch.draw(background, 960, 0, 960, 600);
         //TODO: fix this
-        batch.draw(AssetHelpers.playertex, player.getBody().getPosition().x * YearOfTheFoxGame.PIXELSINMETER-25
-                , player.getBody().getPosition().y * YearOfTheFoxGame.PIXELSINMETER-50 , 50 , 100);
+//        batch.draw(AssetHelpers.playertex, player.getBody().getPosition().x * YearOfTheFoxGame.PIXELSINMETER-25
+//                , player.getBody().getPosition().y * YearOfTheFoxGame.PIXELSINMETER-50 , 50 , 100);
+
+
         world.test.draw(batch);
+        world.getPlayer().draw(batch);
+
+
         batch.draw(AssetHelpers.enem,world.enemy.getX()* YearOfTheFoxGame.PIXELSINMETER-50,world.enemy.getY()* YearOfTheFoxGame.PIXELSINMETER-50,100,100);
         //pos = world.test.getBody().getPosition();
         //world.test.draw(batch);

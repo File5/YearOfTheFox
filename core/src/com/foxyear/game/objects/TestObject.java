@@ -29,7 +29,8 @@ public class TestObject extends GameObject {
 
         file = Gdx.files.internal("test.json");
         bodyName = "test";
-        scale = 1;
+        scale = 3f;
+
     }
 
     public TestObject(World world) {

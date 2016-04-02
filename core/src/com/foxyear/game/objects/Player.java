@@ -1,16 +1,21 @@
 package com.foxyear.game.objects;
 
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.*;
 import com.foxyear.game.YearOfTheFoxGame;
+import com.foxyear.game.helpers.AssetHelpers;
 
 
-public class Player {
+public class Player extends Sprite{
     public static final String TAG = "PLAYER";
     private static final float WIDTH = 0.5f;
     private static final float HEIGHT = 1;
+
+    public Texture tex;
 
     private Body body;
     private boolean grounded;
@@ -18,7 +23,7 @@ public class Player {
     private boolean right;
     private boolean jump;
 
-    public Player(World world) {
+    public Player (World world) {
         BodyDef bodyDef = new BodyDef();
         bodyDef.position.set(2f, 2f);
         bodyDef.type = BodyDef.BodyType.DynamicBody;
@@ -47,6 +52,13 @@ public class Player {
         left = false;
         right = false;
         jump = false;
+
+        tex = AssetHelpers.playertex;
+       set(new Sprite(tex));
+        setSize(50,100);
+
+
+
     }
 
     public Player(World world, Vector2 pos) {
@@ -54,36 +66,36 @@ public class Player {
         body.getPosition().set(pos);
     }
 
-    public void render(ShapeRenderer renderer) {
-        Vector2 pos = body.getPosition();
-        float angle = (float) Math.toDegrees(body.getAngle());
-        Color color = renderer.getColor();
-        renderer.setColor(Color.WHITE);
-        renderer.rect(
-                (pos.x) * YearOfTheFoxGame.PIXELSINMETER,
-                (pos.y) * YearOfTheFoxGame.PIXELSINMETER,
-                WIDTH / 2,
-                HEIGHT / 2,
-                WIDTH,
-                HEIGHT,
-                YearOfTheFoxGame.PIXELSINMETER,
-                YearOfTheFoxGame.PIXELSINMETER,
-                angle
-        );
-        renderer.setColor(Color.BLUE);
-        renderer.rect(
-                (pos.x) * YearOfTheFoxGame.PIXELSINMETER,
-                (pos.y) * YearOfTheFoxGame.PIXELSINMETER,
-                WIDTH / 2,
-                HEIGHT / 2,
-                WIDTH,
-                0.1f,
-                YearOfTheFoxGame.PIXELSINMETER,
-                YearOfTheFoxGame.PIXELSINMETER,
-                angle
-        );
-        renderer.setColor(color);
-    }
+//    public void render(ShapeRenderer renderer) {
+//        Vector2 pos = body.getPosition();
+//        float angle = (float) Math.toDegrees(body.getAngle());
+//        Color color = renderer.getColor();
+//        renderer.setColor(Color.WHITE);
+//        renderer.rect(
+//                (pos.x) * YearOfTheFoxGame.PIXELSINMETER,
+//                (pos.y) * YearOfTheFoxGame.PIXELSINMETER,
+//                WIDTH / 2,
+//                HEIGHT / 2,
+//                WIDTH,
+//                HEIGHT,
+//                YearOfTheFoxGame.PIXELSINMETER,
+//                YearOfTheFoxGame.PIXELSINMETER,
+//                angle
+//        );
+//        renderer.setColor(Color.BLUE);
+//        renderer.rect(
+//                (pos.x) * YearOfTheFoxGame.PIXELSINMETER,
+//                (pos.y) * YearOfTheFoxGame.PIXELSINMETER,
+//                WIDTH / 2,
+//                HEIGHT / 2,
+//                WIDTH,
+//                0.1f,
+//                YearOfTheFoxGame.PIXELSINMETER,
+//                YearOfTheFoxGame.PIXELSINMETER,
+//                angle
+//        );
+//        renderer.setColor(color);
+//    }
 
     public void update() {
         if (left) {
@@ -98,6 +110,9 @@ public class Player {
             velocity.add(0, 6);
             body.setLinearVelocity(velocity);
         }
+    Vector2 pos = body.getPosition();
+
+    setPosition(pos.x * YearOfTheFoxGame.PIXELSINMETER-25, pos.y * YearOfTheFoxGame.PIXELSINMETER-50);
     }
 
     public Body getBody() {

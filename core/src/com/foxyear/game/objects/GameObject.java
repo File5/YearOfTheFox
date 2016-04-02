@@ -23,7 +23,6 @@ public class GameObject extends Sprite {
      */
     public GameObject(World world, BodyDef bodyDef, FixtureDef fixtureDef, FileHandle fileHandle, String bodyName, float scale) {
         BodyEditorLoader loader = new BodyEditorLoader(fileHandle);
-
         body = world.createBody(bodyDef);
         loader.attachFixture(body, bodyName, fixtureDef, scale);
         // setTexture() doesn't work, but this works
@@ -31,9 +30,14 @@ public class GameObject extends Sprite {
         set(new Sprite(new Texture(loader.getImagePath(bodyName))));
 
         Vector2 pos = loader.getOrigin(bodyName, scale);
+        setScale(scale);
         setOrigin(pos.x, pos.y);
         update();
     }
+    public GameObject(World world,BodyDef bodyDef){
+        body = world.createBody(bodyDef);
+    }
+
 
     public void update() {
         Vector2 pos = body.getPosition();
