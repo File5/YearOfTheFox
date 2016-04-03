@@ -16,9 +16,9 @@ public class TestController extends InputAdapter {
 
     @Override
     public boolean keyDown(int keycode) {
-        switch(keycode){
-            case Input.Keys.P:{
-                test.getBody().setTransform(4f,3f,0);
+        switch (keycode) {
+            case Input.Keys.P: {
+                test.getBody().setTransform(4f, 3f, 0);
                 test.update();
                 break;
             }

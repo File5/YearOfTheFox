@@ -22,14 +22,12 @@ public class TestObject extends GameObject {
         bodyDef.position.set(4f, 4f);
         bodyDef.type = BodyDef.BodyType.DynamicBody;
         bodyDef.fixedRotation = false;
-
         fixtureDef = new FixtureDef();
         fixtureDef.density = 1.0f;
         fixtureDef.friction = 0.3f;
-
         file = Gdx.files.internal("test.json");
         bodyName = "test";
-        scale = 3f;
+        scale = 1f;
 
     }
 

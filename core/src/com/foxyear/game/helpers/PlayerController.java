@@ -15,17 +15,20 @@ public class PlayerController extends InputAdapter {
     @Override
     public boolean keyDown(int keycode) {
         switch (keycode) {
-            case Input.Keys.LEFT: case Input.Keys.A :
+            case Input.Keys.LEFT:
+            case Input.Keys.A:
                 player.left();
                 break;
-            case Input.Keys.RIGHT: case Input.Keys.D :
+            case Input.Keys.RIGHT:
+            case Input.Keys.D:
                 player.right();
                 break;
-            case Input.Keys.UP:case Input.Keys.W :
+            case Input.Keys.UP:
+            case Input.Keys.W:
                 player.jump();
                 break;
             case Input.Keys.O:
-                player.getBody().setTransform(2f,3f,0);
+                player.getBody().setTransform(2f, 3f, 0);
                 player.setGrounded(true);
                 player.jump();
                 break;
@@ -38,13 +41,16 @@ public class PlayerController extends InputAdapter {
     @Override
     public boolean keyUp(int keycode) {
         switch (keycode) {
-            case Input.Keys.LEFT: case Input.Keys.A :
+            case Input.Keys.LEFT:
+            case Input.Keys.A:
                 player.leftReleased();
                 break;
-            case Input.Keys.RIGHT:case Input.Keys.D :
+            case Input.Keys.RIGHT:
+            case Input.Keys.D:
                 player.rightReleased();
                 break;
-            case Input.Keys.UP:case Input.Keys.W :
+            case Input.Keys.UP:
+            case Input.Keys.W:
                 player.jumpReleased();
                 break;
             case Input.Keys.O:

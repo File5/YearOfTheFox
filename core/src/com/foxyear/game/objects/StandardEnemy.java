@@ -1,53 +1,42 @@
 package com.foxyear.game.objects;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.*;
 import com.foxyear.game.GameWorld;
+import com.foxyear.game.YearOfTheFoxGame;
 
 /**
  * Created by Xoul on 05.03.2016.
  */
-public class StandardEnemy {
+public class StandardEnemy extends GameObject {
 
-    private Body body;
-    private static final float WIDTH = 1;
-    private static final float HEIGHT = 1;
+    private static BodyDef bodyDef;
+    private static FixtureDef fixtureDef;
+    private static FileHandle file;
+    private static String bodyName;
+    private static float scale;
 
-    public StandardEnemy(World world, float x, float y) {
-        BodyDef bodyDef = new BodyDef();
-        bodyDef.position.set(2f, 4f);
+    static {
+        bodyDef = new BodyDef();
+        bodyDef.position.set(6f, 6f);
         bodyDef.type = BodyDef.BodyType.DynamicBody;
-        bodyDef.fixedRotation = true;
-        FixtureDef fixtureDef = new FixtureDef();
+        bodyDef.fixedRotation = false;
+        fixtureDef = new FixtureDef();
+        fixtureDef.density = 1.0f;
         fixtureDef.friction = 0.3f;
-        PolygonShape shape = new PolygonShape();
-        shape.setAsBox(WIDTH / 2, HEIGHT / 2);
-        fixtureDef.shape = shape;
-        fixtureDef.density = 3.0f;
+        file = Gdx.files.internal("Enemy.json");
+        bodyName = "Enemy";
+        scale = 1f;
 
-
-
-        body = world.createBody(bodyDef);
-        body.createFixture(fixtureDef).setUserData("dfs");
-        //body.setUserData(this);
-
-        shape.dispose();
     }
 
-    public void update(Player player, float delta) {
-//        body.getPosition().set(body.getPosition().x+(body.getPosition().x-player.getX())*delta,body.getPosition().y);
-        if (player.getX() < body.getPosition().x)
-            body.applyForceToCenter(new Vector2(-10, 0), true);
-        else {
-            body.applyForceToCenter(new Vector2(10, 0), true);
-        }
+    public StandardEnemy(World world) {
+        super(world, bodyDef, fixtureDef, file, bodyName, scale);
+        setFixturesData("GROUND");
     }
 
-    public float getX() {
-        return body.getPosition().x;
-    }
 
-    public float getY() {
-        return body.getPosition().y;
-    }
+
 }

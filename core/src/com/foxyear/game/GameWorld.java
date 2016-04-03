@@ -16,8 +16,6 @@ import com.foxyear.game.objects.StandardEnemy;
 
 
 public class GameWorld {
-    public static final int V_WIDTH = 800;
-    public static final int V_HEIGTH = 400;
 
     private World world;
     public Floor floor;
@@ -28,19 +26,16 @@ public class GameWorld {
     public GameWorld() {
         world = new World(new Vector2(0, -10f), true);
         player = new Player(world);
+        enemy = new StandardEnemy(world);
         test = new TestObject(world);
+
         world.setContactListener(new PlayerContactListener(player));
         InputMultiplexer mult = new InputMultiplexer();
         mult.addProcessor(new PlayerController(player));
         mult.addProcessor(new TestController(test));
         Gdx.input.setInputProcessor(mult);
-
         //floor = new Floor(world, Gdx.files.internal("ground.json"));
         floor = new Floor(world, Gdx.files.internal("testMap.json"));
-
-
-
-        enemy = new StandardEnemy(world,0f,5f);
 //        test = new GameObject(world, testBd, testFd, Gdx.files.internal("test.json"), "test", 1.0f);
 //        test.setFixturesData("GROUND");
 
@@ -48,14 +43,9 @@ public class GameWorld {
 
     public void update(float delta) {
         player.update();
-
         test.update();
-
-        //test.update();
-        enemy.update(player,delta);
-
+        enemy.update();
         world.step(delta, 10, 10);
-
     }
 
     public Player getPlayer() {

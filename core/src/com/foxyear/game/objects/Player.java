@@ -1,5 +1,6 @@
 package com.foxyear.game.objects;
 
+import aurelienribon.bodyeditor.BodyEditorLoader;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
@@ -8,6 +9,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.*;
 import com.foxyear.game.YearOfTheFoxGame;
 import com.foxyear.game.helpers.AssetHelpers;
+
 
 
 public class Player extends Sprite{
@@ -24,15 +26,14 @@ public class Player extends Sprite{
     private boolean jump;
 
     public Player (World world) {
+
         BodyDef bodyDef = new BodyDef();
         bodyDef.position.set(2f, 2f);
         bodyDef.type = BodyDef.BodyType.DynamicBody;
         bodyDef.fixedRotation = true;
+
         FixtureDef fixtureDef = new FixtureDef();
         fixtureDef.friction = 0.3f;
-        PolygonShape shape = new PolygonShape();
-        shape.setAsBox(WIDTH / 2, HEIGHT / 2);
-        fixtureDef.shape = shape;
         fixtureDef.density = 3.0f;
 
         FixtureDef groundFixture = new FixtureDef();
@@ -42,19 +43,23 @@ public class Player extends Sprite{
         groundFixture.shape = edgeShape;
 
         body = world.createBody(bodyDef);
-        body.createFixture(fixtureDef).setUserData(TAG);
+        BodyEditorLoader loader = new BodyEditorLoader("Player.json");
+        loader.attachFixture(body, "Player", fixtureDef, 1);
         body.createFixture(groundFixture).setUserData(TAG + "GROUND");
         //body.setUserData(this);
 
-        shape.dispose();
+
 
         grounded = false;
         left = false;
         right = false;
         jump = false;
 
-        tex = AssetHelpers.playertex;
-       set(new Sprite(tex));
+
+        set(new Sprite(new Texture(loader.getImagePath("Player"))));
+        Vector2 pos = loader.getOrigin("Player", 1);
+        setOrigin(pos.x,pos.y);
+
         setSize(50,100);
 
 
