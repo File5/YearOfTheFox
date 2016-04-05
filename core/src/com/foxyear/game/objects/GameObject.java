@@ -26,6 +26,7 @@ public class GameObject extends Sprite {
 
         BodyEditorLoader loader = new BodyEditorLoader(fileHandle);
         body = world.createBody(bodyDef);
+        body.setUserData("PLAYERGROUND");
         loader.attachFixture(body, bodyName, fixtureDef, scale);
         // setTexture() doesn't work, but this works
         // I don't know why
@@ -34,7 +35,7 @@ public class GameObject extends Sprite {
 
         setOrigin(pos.x, pos.y);
         setScale(scale);
-     //   update();
+        update();
     }
 
     public GameObject(World world, BodyDef bodyDef) {

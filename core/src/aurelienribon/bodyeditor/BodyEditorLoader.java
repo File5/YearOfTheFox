@@ -87,7 +87,7 @@ public class BodyEditorLoader {
 
 			for (int ii=0, nn=vertices.length; ii<nn; ii++) {
 				vertices[ii] = newVec().set(polygon.vertices.get(ii)).scl(scale);
-				vertices[ii].sub(origin);
+				//vertices[ii].sub(origin);
 			}
 
 			polygonShape.set(vertices);

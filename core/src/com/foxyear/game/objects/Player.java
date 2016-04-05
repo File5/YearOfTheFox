@@ -1,14 +1,13 @@
 package com.foxyear.game.objects;
 
 import aurelienribon.bodyeditor.BodyEditorLoader;
-import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.*;
 import com.foxyear.game.YearOfTheFoxGame;
-import com.foxyear.game.helpers.AssetHelpers;
 
 
 
@@ -24,29 +23,33 @@ public class Player extends Sprite{
     private boolean left;
     private boolean right;
     private boolean jump;
+    private FileHandle file;
+    private float scale = 1f;
 
     public Player (World world) {
 
         BodyDef bodyDef = new BodyDef();
-        bodyDef.position.set(2f, 2f);
+        bodyDef.position.set(2f, 10f);
         bodyDef.type = BodyDef.BodyType.DynamicBody;
         bodyDef.fixedRotation = true;
 
         FixtureDef fixtureDef = new FixtureDef();
         fixtureDef.friction = 0.3f;
-        fixtureDef.density = 3.0f;
+        fixtureDef.density = 1.0f;
 
         FixtureDef groundFixture = new FixtureDef();
         groundFixture.isSensor = true;
         EdgeShape edgeShape = new EdgeShape();
-        edgeShape.set(new Vector2(-WIDTH / 4 , -HEIGHT / 2), new Vector2(WIDTH / 4 , -HEIGHT / 2));
+        edgeShape.set(new Vector2((int)(-WIDTH / 1.1) , -HEIGHT / 2), new Vector2((int)(WIDTH / 1.1) , -HEIGHT / 2));
         groundFixture.shape = edgeShape;
 
+        file = Gdx.files.internal("Player.json");
         body = world.createBody(bodyDef);
-        BodyEditorLoader loader = new BodyEditorLoader("Player.json");
-        loader.attachFixture(body, "Player", fixtureDef, 1);
+        BodyEditorLoader loader = new BodyEditorLoader(file);
         body.createFixture(groundFixture).setUserData(TAG + "GROUND");
-        //body.setUserData(this);
+        loader.attachFixture(body, "Player", fixtureDef, scale);
+
+       // body.setUserData(this);
 
 
 
@@ -57,10 +60,11 @@ public class Player extends Sprite{
 
 
         set(new Sprite(new Texture(loader.getImagePath("Player"))));
-        Vector2 pos = loader.getOrigin("Player", 1);
+       // setSize(50,100);
+        Vector2 pos = loader.getOrigin("Player", scale);
         setOrigin(pos.x,pos.y);
-
-        setSize(50,100);
+        setScale(scale);
+        update();
 
 
 
@@ -71,36 +75,7 @@ public class Player extends Sprite{
         body.getPosition().set(pos);
     }
 
-//    public void render(ShapeRenderer renderer) {
-//        Vector2 pos = body.getPosition();
-//        float angle = (float) Math.toDegrees(body.getAngle());
-//        Color color = renderer.getColor();
-//        renderer.setColor(Color.WHITE);
-//        renderer.rect(
-//                (pos.x) * YearOfTheFoxGame.PIXELSINMETER,
-//                (pos.y) * YearOfTheFoxGame.PIXELSINMETER,
-//                WIDTH / 2,
-//                HEIGHT / 2,
-//                WIDTH,
-//                HEIGHT,
-//                YearOfTheFoxGame.PIXELSINMETER,
-//                YearOfTheFoxGame.PIXELSINMETER,
-//                angle
-//        );
-//        renderer.setColor(Color.BLUE);
-//        renderer.rect(
-//                (pos.x) * YearOfTheFoxGame.PIXELSINMETER,
-//                (pos.y) * YearOfTheFoxGame.PIXELSINMETER,
-//                WIDTH / 2,
-//                HEIGHT / 2,
-//                WIDTH,
-//                0.1f,
-//                YearOfTheFoxGame.PIXELSINMETER,
-//                YearOfTheFoxGame.PIXELSINMETER,
-//                angle
-//        );
-//        renderer.setColor(color);
-//    }
+
 
     public void update() {
         if (left) {
@@ -117,7 +92,7 @@ public class Player extends Sprite{
         }
     Vector2 pos = body.getPosition();
 
-    setPosition(pos.x * YearOfTheFoxGame.PIXELSINMETER-25, pos.y * YearOfTheFoxGame.PIXELSINMETER-50);
+    setPosition(pos.x * YearOfTheFoxGame.PIXELSINMETER, pos.y * YearOfTheFoxGame.PIXELSINMETER);
     }
 
     public Body getBody() {

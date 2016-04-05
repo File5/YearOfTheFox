@@ -27,7 +27,7 @@ public class TestObject extends GameObject {
         fixtureDef.friction = 0.3f;
         file = Gdx.files.internal("test.json");
         bodyName = "test";
-        scale = 1f;
+        scale = 0.2f;
 
     }
 
