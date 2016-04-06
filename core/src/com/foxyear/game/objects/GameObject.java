@@ -26,15 +26,16 @@ public class GameObject extends Sprite {
 
         BodyEditorLoader loader = new BodyEditorLoader(fileHandle);
         body = world.createBody(bodyDef);
-        body.setUserData("PLAYERGROUND");
+        body.setUserData("GROUND");
         loader.attachFixture(body, bodyName, fixtureDef, scale);
         // setTexture() doesn't work, but this works
         // I don't know why
-        set(new Sprite(new Texture(loader.getImagePath(bodyName))));
+        Sprite sprite = new Sprite(new Texture(loader.getImagePath(bodyName)));
+        set(sprite);
         Vector2 pos = loader.getOrigin(bodyName, scale);
-
+        // float maxhw = Math.max(sprite.getHeight(), sprite.getWidth());
         setOrigin(pos.x, pos.y);
-        setScale(scale);
+        setScale(YearOfTheFoxGame.PIXELSINMETER * scale / sprite.getWidth());
         update();
     }
 
