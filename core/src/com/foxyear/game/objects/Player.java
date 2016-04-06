@@ -9,8 +9,8 @@ import com.foxyear.game.YearOfTheFoxGame;
 
 public class Player extends GameObject {
     public static final String TAG = "PLAYER";
-    private static final float WIDTH = 0.5f;
-    private static final float HEIGHT = 1;
+    private static final float WIDTH = 1f;
+    private static final float HEIGHT = 2;
     private static BodyDef bodyDef;
     private static FixtureDef fixtureDef;
     protected static FileHandle file;
@@ -27,13 +27,11 @@ public class Player extends GameObject {
         fixtureDef.friction = 0.3f;
         fixtureDef.density = 1.0f;
 
-        scale = 1f;
+        scale = 0.5f;
 
         file = Gdx.files.internal("Player.json");
         bodyName = "Player";
     }
-
-    public Texture tex;
 
     private boolean grounded;
     private boolean left;
@@ -47,9 +45,9 @@ public class Player extends GameObject {
         FixtureDef groundFixture = new FixtureDef();
         groundFixture.isSensor = true;
         EdgeShape edgeShape = new EdgeShape();
-        edgeShape.set(new Vector2((-WIDTH / 4) , -HEIGHT / 2), new Vector2((WIDTH / 4) , -HEIGHT / 2));
+        edgeShape.set(new Vector2(0.1f * scale , 0), new Vector2(((WIDTH - 0.1f)*scale) , 0));
         groundFixture.shape = edgeShape;
-        body.createFixture(groundFixture);
+        body.createFixture(groundFixture).setUserData(TAG + "GROUND");
 
         grounded = false;
         left = false;
@@ -58,6 +56,7 @@ public class Player extends GameObject {
 
     }
 
+    @Deprecated
     public Player(World world, Vector2 pos) {
         this(world);
         body.getPosition().set(pos);
@@ -76,17 +75,15 @@ public class Player extends GameObject {
         if (jump && isGrounded()) {
             setGrounded(false);
             Vector2 velocity = body.getLinearVelocity();
-            velocity.add(0, 6);
+            velocity.set(0,6);
             body.setLinearVelocity(velocity);
+
         }
     Vector2 pos = body.getPosition();
-
     setPosition(pos.x * YearOfTheFoxGame.PIXELSINMETER, pos.y * YearOfTheFoxGame.PIXELSINMETER);
     }
 
-    public Body getBody() {
-        return body;
-    }
+
 
     public void setGrounded(boolean grounded) {
         this.grounded = grounded;
