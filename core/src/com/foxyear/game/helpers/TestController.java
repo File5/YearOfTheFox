@@ -2,15 +2,15 @@ package com.foxyear.game.helpers;
 
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputAdapter;
-import com.foxyear.game.objects.TestObject;
+import com.foxyear.game.objects.Stone;
 
 /**
  * Created by Xoul on 02.04.2016.
  */
 public class TestController extends InputAdapter {
-    private TestObject test;
+    private Stone test;
 
-    public TestController(TestObject test) {
+    public TestController(Stone test) {
         this.test = test;
     }
 

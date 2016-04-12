@@ -2,12 +2,11 @@ package com.foxyear.game.objects;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.*;
 import com.foxyear.game.YearOfTheFoxGame;
 
-public class Player extends GameObject {
+public class Player extends RigitObject {
     public static final String TAG = "PLAYER";
     private static final float WIDTH = 1f;
     private static final float HEIGHT = 2;

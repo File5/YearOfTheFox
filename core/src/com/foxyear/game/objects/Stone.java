@@ -7,10 +7,10 @@ import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.World;
 
 /**
- * The TestObject class is an example of extending GameObject.
+ * The Stone class is an example of extending RigitObject.
  * All stuff created in static block and passed to the super() constructor.
  */
-public class TestObject extends GameObject {
+public class Stone extends RigitObject {
     private static BodyDef bodyDef;
     private static FixtureDef fixtureDef;
     private static FileHandle file;
@@ -31,7 +31,7 @@ public class TestObject extends GameObject {
 
     }
 
-    public TestObject(World world) {
+    public Stone(World world) {
         super(world, bodyDef, fixtureDef, file, bodyName, scale);
         setFixturesData("GROUND");
     }

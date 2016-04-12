@@ -10,7 +10,7 @@ import com.foxyear.game.helpers.TestController;
 import com.foxyear.game.objects.Floor;
 import com.foxyear.game.objects.Player;
 
-import com.foxyear.game.objects.TestObject;
+import com.foxyear.game.objects.Stone;
 
 import com.foxyear.game.objects.StandardEnemy;
 
@@ -21,13 +21,13 @@ public class GameWorld {
     public Floor floor;
     public StandardEnemy enemy;
     private Player player;
-    TestObject test;
+    Stone test;
 
     public GameWorld() {
         world = new World(new Vector2(0, -10f), true);
         player = new Player(world);
         enemy = new StandardEnemy(world);
-        test = new TestObject(world);
+        test = new Stone(world);
 
         world.setContactListener(new PlayerContactListener(player));
         InputMultiplexer mult = new InputMultiplexer();
@@ -36,7 +36,7 @@ public class GameWorld {
         Gdx.input.setInputProcessor(mult);
         //floor = new Floor(world, Gdx.files.internal("ground.json"));
         floor = new Floor(world, Gdx.files.internal("testMap.json"));
-//        test = new GameObject(world, testBd, testFd, Gdx.files.internal("test.json"), "test", 1.0f);
+//        test = new RigitObject(world, testBd, testFd, Gdx.files.internal("test.json"), "test", 1.0f);
 //        test.setFixturesData("GROUND");
 
     }

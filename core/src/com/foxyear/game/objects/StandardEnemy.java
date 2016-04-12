@@ -2,15 +2,12 @@ package com.foxyear.game.objects;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
-import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.*;
-import com.foxyear.game.GameWorld;
-import com.foxyear.game.YearOfTheFoxGame;
 
 /**
  * Created by Xoul on 05.03.2016.
  */
-public class StandardEnemy extends GameObject {
+public class StandardEnemy extends RigitObject {
 
     private static BodyDef bodyDef;
     private static FixtureDef fixtureDef;
