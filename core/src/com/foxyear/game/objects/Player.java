@@ -72,7 +72,6 @@ public class Player extends RigitObject {
             body.applyForceToCenter(new Vector2(10, 0), true);
         }
         if (jump && isGrounded()) {
-            setGrounded(false);
             Vector2 velocity = body.getLinearVelocity();
             velocity.set(0,6);
             body.setLinearVelocity(velocity);
