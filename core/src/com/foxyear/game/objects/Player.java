@@ -44,7 +44,7 @@ public class Player extends RigitObject {
         FixtureDef groundFixture = new FixtureDef();
         groundFixture.isSensor = true;
         EdgeShape edgeShape = new EdgeShape();
-        edgeShape.set(new Vector2(0.1f * scale , 0), new Vector2(((WIDTH - 0.1f)*scale) , 0));
+        edgeShape.set(new Vector2(0.2f * scale , 0.001f), new Vector2(((WIDTH - 0.2f)*scale) , 0.001f));
         groundFixture.shape = edgeShape;
         body.createFixture(groundFixture).setUserData(TAG + "GROUND");
 
