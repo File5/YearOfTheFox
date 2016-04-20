@@ -65,7 +65,6 @@ public class GameRenderer {
         for (GameObject gameobj : world.LevelObjects) {
             gameobj.draw(batch);
         }
-        world.enemy.draw(batch);
         world.getPlayer().draw(batch);
 
 

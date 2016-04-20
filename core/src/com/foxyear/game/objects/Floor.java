@@ -45,26 +45,6 @@ public class Floor {
         floor.getPosition().set(4.8f, 0f);
     }
 
-    public Vector2 getPosition() {
-        return floor.getPosition();
-    }
 
-    public void render(ShapeRenderer renderer) {
-        Vector2 pos = floor.getPosition();
-        Color color = renderer.getColor();
-        renderer.setColor(Color.GREEN);
-        renderer.rect(
-                (pos.x) * YearOfTheFoxGame.PIXELSINMETER,
-                (pos.y) * YearOfTheFoxGame.PIXELSINMETER,
-                WIDTH / 2,
-                HEIGHT / 2,
-                WIDTH,
-                HEIGHT,
-                YearOfTheFoxGame.PIXELSINMETER,
-                YearOfTheFoxGame.PIXELSINMETER,
-                0
-        );
-        renderer.setColor(color);
-    }
 
 }

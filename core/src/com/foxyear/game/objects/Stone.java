@@ -11,6 +11,7 @@ import com.badlogic.gdx.physics.box2d.World;
  * All stuff created in static block and passed to the super() constructor.
  */
 public class Stone extends RigitObject {
+
     private static BodyDef bodyDef;
     private static FixtureDef fixtureDef;
     private static FileHandle file;
@@ -18,6 +19,7 @@ public class Stone extends RigitObject {
     private static float scale;
 
     static {
+        type = "stone";
         bodyDef = new BodyDef();
         bodyDef.position.set(4f, 4f);
         bodyDef.type = BodyDef.BodyType.DynamicBody;

@@ -4,9 +4,7 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputAdapter;
 import com.foxyear.game.objects.Stone;
 
-/**
- * Created by Xoul on 02.04.2016.
- */
+
 public class TestController extends InputAdapter {
     private Stone test;
 
@@ -18,8 +16,6 @@ public class TestController extends InputAdapter {
     public boolean keyDown(int keycode) {
         switch (keycode) {
             case Input.Keys.P: {
-                test.getBody().setTransform(4f, 3f, 0);
-                test.update();
                 break;
             }
         }

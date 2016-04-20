@@ -4,9 +4,6 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.physics.box2d.*;
 
-/**
- * Created by Xoul on 05.03.2016.
- */
 public class StandardEnemy extends RigitObject {
 
     private static BodyDef bodyDef;
@@ -16,6 +13,7 @@ public class StandardEnemy extends RigitObject {
     private static float scale;
 
     static {
+        type = "StandardEnemy";
         bodyDef = new BodyDef();
         bodyDef.position.set(6f, 6f);
         bodyDef.type = BodyDef.BodyType.DynamicBody;
@@ -28,7 +26,10 @@ public class StandardEnemy extends RigitObject {
         scale = 1f;
 
     }
-
+    public StandardEnemy(World world,BodyDef bodyDef,float scale) {
+        super(world, bodyDef, fixtureDef, file, bodyName, scale);
+        setFixturesData("GROUND");
+    }
     public StandardEnemy(World world) {
         super(world, bodyDef, fixtureDef, file, bodyName, scale);
         setFixturesData("GROUND");

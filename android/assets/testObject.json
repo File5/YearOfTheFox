@@ -4,9 +4,24 @@
     {
       "type":"stone",
       "instances":[
-        {"Coords":{"x":"2","y":"5"},"scale":"1"},
-        {"Coords":{"x":"4","y":"5"},"scale":"1"},
-        {"Coords":{"x":"6","y":"5"},"scale":"2"}
+
+      ]
+    },
+    {
+      "type":"StandardEnemy",
+      "instances":[
+        {"Coords":{"x":"0","y":"1"},"scale":"1"},
+        {"Coords":{"x":"3","y":"1"},"scale":"1"},
+        {"Coords":{"x":"7","y":"1"},"scale":"1"},
+        {"Coords":{"x":"0","y":"2"},"scale":"1"},
+        {"Coords":{"x":"3","y":"2"},"scale":"1"},
+        {"Coords":{"x":"7","y":"2"},"scale":"1"}
+        {"Coords":{"x":"0","y":"3"},"scale":"1"},
+        {"Coords":{"x":"3","y":"3"},"scale":"1"},
+        {"Coords":{"x":"7","y":"3"},"scale":"1"},
+        {"Coords":{"x":"0","y":"4"},"scale":"1"},
+        {"Coords":{"x":"3","y":"4"},"scale":"1"},
+        {"Coords":{"x":"7","y":"4"},"scale":"1"}
       ]
     }
   ],

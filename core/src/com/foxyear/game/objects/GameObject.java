@@ -10,7 +10,7 @@ import com.badlogic.gdx.physics.box2d.World;
 
 public abstract class GameObject extends Sprite {
     protected Body body;
-
+    public static  String type;
 
     /**
      * @param world   physical world to create object in.
