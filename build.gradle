@@ -57,7 +57,7 @@ project(":android") {
 
     dependencies {
         compile project(":core")
-        compile 'com.google.code.gson:gson:2.2.4'
+        compile "com.googlecode.json-simple:json-simple:1.1"
         compile "com.badlogicgames.gdx:gdx-backend-android:$gdxVersion"
         natives "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-armeabi"
         natives "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-armeabi-v7a"
@@ -95,6 +95,7 @@ project(":core") {
 
 
     dependencies {
+        compile "com.googlecode.json-simple:json-simple:1.1"
         compile "com.badlogicgames.gdx:gdx:$gdxVersion"
         compile "com.badlogicgames.gdx:gdx-box2d:$gdxVersion"
         compile "com.badlogicgames.gdx:gdx-controllers:$gdxVersion"

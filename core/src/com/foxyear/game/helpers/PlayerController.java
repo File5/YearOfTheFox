@@ -29,7 +29,7 @@ public class PlayerController extends InputAdapter {
                 break;
             case Input.Keys.O:
                 player.getBody().setTransform(2f, 3f, 0);
-                player.setGrounded(true);
+                player.setGrounded(false);
                 player.jump();
                 break;
             default:

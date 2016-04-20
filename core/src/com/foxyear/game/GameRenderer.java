@@ -9,6 +9,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.foxyear.game.helpers.AssetHelpers;
+import com.foxyear.game.objects.GameObject;
 import com.foxyear.game.objects.Player;
 import com.foxyear.game.scene.HUD;
 
@@ -55,11 +56,15 @@ public class GameRenderer {
 //        shapeRenderer.end();
         batch.setProjectionMatrix(camera.combined);
         batch.begin();
-        batch.enableBlending();
+        batch.disableBlending();
+
         batch.draw(background, 0, 0, 960, 600);
         batch.draw(background, -960, 0, 960, 600);
         batch.draw(background, 960, 0, 960, 600);
-        world.test.draw(batch);
+        batch.enableBlending();
+        for (GameObject gameobj : world.LevelObjects) {
+            gameobj.draw(batch);
+        }
         world.enemy.draw(batch);
         world.getPlayer().draw(batch);
 

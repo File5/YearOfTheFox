@@ -35,5 +35,9 @@ public class Stone extends RigitObject {
         super(world, bodyDef, fixtureDef, file, bodyName, scale);
         setFixturesData("GROUND");
     }
+    public Stone(World world,BodyDef bodyDef,float scale) {
+        super(world, bodyDef, fixtureDef, file, bodyName, scale);
+        setFixturesData("GROUND");
+    }
 
 }

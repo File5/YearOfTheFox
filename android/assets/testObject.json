@@ -1,0 +1,17 @@
+{
+  "title":"YearWhenTheFoxFoundAHex",
+  "objects":[
+    {
+      "type":"stone",
+      "instances":[
+        {"Coords":{"x":"2","y":"5"},"scale":"1"},
+        {"Coords":{"x":"4","y":"5"},"scale":"1"},
+        {"Coords":{"x":"6","y":"5"},"scale":"2"}
+      ]
+    }
+  ],
+  "inventory":[
+    {},
+    {}
+  ]
+}
