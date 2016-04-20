@@ -8,12 +8,14 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
-import com.foxyear.game.helpers.AssetHelpers;
 import com.foxyear.game.objects.GameObject;
+import com.foxyear.game.helpers.AssetsLoader;
+import com.foxyear.game.helpers.TexturePaths;
 import com.foxyear.game.objects.Player;
 import com.foxyear.game.scene.HUD;
 
 public class GameRenderer {
+
     private OrthographicCamera camera;
     public HUD hud;
     private SpriteBatch batch;
@@ -36,7 +38,7 @@ public class GameRenderer {
         hud = new HUD(batch);
         gameHeight = Gdx.graphics.getHeight();
         gameWidth = Gdx.graphics.getWidth();
-        background = AssetHelpers.background;
+        background = AssetsLoader.getInstance().getTexture(TexturePaths.BACKGROUND);
     }
 
     public void resize(int width, int height) {

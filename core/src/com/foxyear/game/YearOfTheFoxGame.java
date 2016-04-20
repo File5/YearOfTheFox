@@ -2,7 +2,8 @@ package com.foxyear.game;
 
 import com.badlogic.gdx.Game;
 
-import com.foxyear.game.helpers.AssetHelpers;
+
+import com.foxyear.game.helpers.AssetsLoader;
 import com.foxyear.game.screens.GameScreen;
 
 
@@ -12,13 +13,12 @@ public class YearOfTheFoxGame extends Game {
 
 	@Override
 	public void create() {
-		AssetHelpers.load();
 		setScreen(new GameScreen());
 	}
 
 	@Override
 	public void dispose(){
+		AssetsLoader.getInstance().dispose();
 		super.dispose();
-		AssetHelpers.dispose();
 	}
 }
