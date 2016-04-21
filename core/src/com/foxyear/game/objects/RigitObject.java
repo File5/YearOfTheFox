@@ -20,6 +20,7 @@ public class RigitObject extends GameObject {
      * @param bodyName   name of the body in the file.
      * @param scale      multiplier of the object's size.
      */
+    float scale;
     public RigitObject(World world, BodyDef bodyDef, FixtureDef fixtureDef, FileHandle fileHandle, String bodyName, float scale) {
         super(world,bodyDef);
         BodyEditorLoader loader = new BodyEditorLoader(fileHandle);
@@ -33,6 +34,7 @@ public class RigitObject extends GameObject {
         // float maxhw = Math.max(sprite.getHeight(), sprite.getWidth());
         setOrigin(pos.x, pos.y);
         setScale(YearOfTheFoxGame.PIXELSINMETER * scale / sprite.getWidth());
+        this.scale = scale;
         update();
     }
 
@@ -47,5 +49,7 @@ public class RigitObject extends GameObject {
             fixture.setUserData(object);
         }
     }
-
+    public float getScale() {
+        return scale;
+    }
 }

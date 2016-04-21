@@ -10,6 +10,7 @@ import com.foxyear.game.screens.GameScreen;
 public class YearOfTheFoxGame extends Game {
 	public static final int PIXELSINMETER = 100;
 	public static final int INVENTORYSIZE = 10;
+	public static  int SavedNumber = 0;
 
 	@Override
 	public void create() {

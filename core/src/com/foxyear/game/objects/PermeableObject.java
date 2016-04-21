@@ -14,4 +14,9 @@ public class PermeableObject extends GameObject{
     public void update() {
 
     }
+
+    @Override
+    public float getScale() {
+        return 0;
+    }
 }

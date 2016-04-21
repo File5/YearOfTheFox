@@ -31,4 +31,5 @@ public abstract class GameObject extends Sprite {
     public Body getBody() {
         return body;
     }
+    public abstract float getScale();
 }

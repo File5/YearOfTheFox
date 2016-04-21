@@ -7,6 +7,7 @@ import com.badlogic.gdx.physics.box2d.World;
 import com.foxyear.game.helpers.LevelHelper;
 import com.foxyear.game.helpers.PlayerContactListener;
 import com.foxyear.game.helpers.PlayerController;
+import com.foxyear.game.helpers.TestController;
 import com.foxyear.game.objects.*;
 
 import java.util.LinkedList;
@@ -15,7 +16,7 @@ import java.util.LinkedList;
 public class GameWorld {
 
     private World world;
-    public LinkedList<GameObject> LevelObjects;
+    public static LinkedList<GameObject> LevelObjects;
     public Floor floor;
     public StandardEnemy enemy;
     private Player player;
@@ -27,10 +28,10 @@ public class GameWorld {
         world.setContactListener(new PlayerContactListener(player));
         InputMultiplexer mult = new InputMultiplexer();
         mult.addProcessor(new PlayerController(player));
-    //    mult.addProcessor(new TestController(test));
+        mult.addProcessor(new TestController(test));
         Gdx.input.setInputProcessor(mult);
         floor = new Floor(world, Gdx.files.internal("testMap.json"));
-        LevelObjects = LevelHelper.loadLevelFromJSONFile("testObject.json",world);
+        LevelObjects = LevelHelper.loadLevelFromJSONFile("savedlevel0.json",world);
 
 
     }
@@ -43,6 +44,8 @@ public class GameWorld {
         }
         world.step(delta, 10, 10);
     }
+
+
 
     public Player getPlayer() {
         return player;
