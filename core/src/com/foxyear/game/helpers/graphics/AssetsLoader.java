@@ -1,13 +1,10 @@
-package com.foxyear.game.helpers;
+package com.foxyear.game.helpers.graphics;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.utils.Disposable;
 
 import java.util.HashMap;
 
-/**
- * Created by MyFriend on 20.04.2016.
- */
 public class AssetsLoader implements Disposable {
 
     private static AssetsLoader instance;

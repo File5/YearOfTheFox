@@ -23,7 +23,7 @@ public class PlayerContactListener implements ContactListener {
         }
         // if it is (Floor & Player) collusion
         if (obj1.toString().equals(Player.TAG + "GROUND") || obj2.toString().equals(Player.TAG + "GROUND")) {
-            player.setGrounded(true);
+            //player.setGrounded(true);
         }
     }
 
@@ -37,7 +37,7 @@ public class PlayerContactListener implements ContactListener {
         }
         // if it is (Floor & Player) collusion ending
         if (obj1.toString().equals(Player.TAG + "GROUND") || obj2.toString().equals(Player.TAG + "GROUND")) {
-            player.setGrounded(false);
+           // player.setGrounded(false);
         }
     }
 

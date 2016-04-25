@@ -38,7 +38,6 @@ public class LevelHelper {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        System.out.println(result.toString());
         ArrayList<JSONObject> JSONlevelobjects = new ArrayList<JSONObject>((Collection<? extends JSONObject>) result.get("objects"));
         for (JSONObject levelobject : JSONlevelobjects) {
             String type;
@@ -53,7 +52,6 @@ public class LevelHelper {
                 float scale = Float.valueOf(Double.valueOf((Double) currentobj.get("scale")).toString());
                 factoryObjectsBuilder(type, x, y, scale, levelObjects, world);
             }
-            //TODO обсудить эти параметры со всеми
         }
         return levelObjects;
 

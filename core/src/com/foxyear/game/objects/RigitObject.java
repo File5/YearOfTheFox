@@ -24,7 +24,6 @@ public class RigitObject extends GameObject {
     public RigitObject(World world, BodyDef bodyDef, FixtureDef fixtureDef, FileHandle fileHandle, String bodyName, float scale) {
         super(world,bodyDef);
         BodyEditorLoader loader = new BodyEditorLoader(fileHandle);
-        body.setUserData("GROUND");
         loader.attachFixture(body, bodyName, fixtureDef, scale);
         // setTexture() doesn't work, but this works
         // I don't know why
@@ -33,14 +32,13 @@ public class RigitObject extends GameObject {
         Vector2 pos = loader.getOrigin(bodyName, scale);
         // float maxhw = Math.max(sprite.getHeight(), sprite.getWidth());
         setOrigin(pos.x, pos.y);
-        setScale(YearOfTheFoxGame.PIXELSINMETER * scale / sprite.getWidth());
+        setScale(YearOfTheFoxGame.PPM * scale / sprite.getWidth());
         this.scale = scale;
-        update();
     }
 
     public void update() {
         Vector2 pos = body.getPosition();
-        setPosition(pos.x * YearOfTheFoxGame.PIXELSINMETER, pos.y * YearOfTheFoxGame.PIXELSINMETER);
+        setPosition(pos.x * YearOfTheFoxGame.PPM, pos.y * YearOfTheFoxGame.PPM);
         setRotation((float) Math.toDegrees(body.getAngle()));
     }
 

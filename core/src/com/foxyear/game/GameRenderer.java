@@ -9,8 +9,8 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.foxyear.game.objects.GameObject;
-import com.foxyear.game.helpers.AssetsLoader;
-import com.foxyear.game.helpers.TexturePaths;
+import com.foxyear.game.helpers.graphics.AssetsLoader;
+import com.foxyear.game.helpers.graphics.TexturePaths;
 import com.foxyear.game.objects.Player;
 import com.foxyear.game.scene.HUD;
 
@@ -43,7 +43,7 @@ public class GameRenderer {
 
     public void resize(int width, int height) {
         float aspectRatio = (float) width / (float) height;
-        camera = new OrthographicCamera(5f * YearOfTheFoxGame.PIXELSINMETER * aspectRatio, 5f * YearOfTheFoxGame.PIXELSINMETER);
+        camera = new OrthographicCamera(5f * YearOfTheFoxGame.PPM * aspectRatio, 5f * YearOfTheFoxGame.PPM);
         viewport.update(width, height);
     }
 
@@ -70,16 +70,16 @@ public class GameRenderer {
         world.getPlayer().draw(batch);
 
 
-      //  batch.draw(AssetHelpers.enem, world.enemy.getX() * YearOfTheFoxGame.PIXELSINMETER - 50, world.enemy.getY() * YearOfTheFoxGame.PIXELSINMETER - 50, 100, 100);
+      //  batch.draw(AssetHelpers.enem, world.enemy.getX() * YearOfTheFoxGame.PPM - 50, world.enemy.getY() * YearOfTheFoxGame.PPM - 50, 100, 100);
         //pos = world.test.getBody().getPosition();
         //world.test.draw(batch);
-        //batch.draw(world.test.getTexture(), pos.x * YearOfTheFoxGame.PIXELSINMETER, pos.y * YearOfTheFoxGame.PIXELSINMETER);
+        //batch.draw(world.test.getTexture(), pos.x * YearOfTheFoxGame.PPM, pos.y * YearOfTheFoxGame.PPM);
         batch.end();
 //        batch.setProjectionMatrix(hud.stage.getCamera().combined);
         hud.stage.draw();
         Vector2 pos = player.getBody().getPosition();
-        camera.position.x = pos.x * YearOfTheFoxGame.PIXELSINMETER;
-        camera.position.y = pos.y + 3f * YearOfTheFoxGame.PIXELSINMETER;
+        camera.position.x = pos.x * YearOfTheFoxGame.PPM;
+        camera.position.y = pos.y + 3f * YearOfTheFoxGame.PPM;
         camera.update();
     }
 }

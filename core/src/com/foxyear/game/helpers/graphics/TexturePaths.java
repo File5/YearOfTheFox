@@ -1,4 +1,4 @@
-package com.foxyear.game.helpers;
+package com.foxyear.game.helpers.graphics;
 
 /**
  * Created by MyFriend on 20.04.2016.
