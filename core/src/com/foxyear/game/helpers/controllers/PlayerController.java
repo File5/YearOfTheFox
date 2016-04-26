@@ -26,8 +26,8 @@ public class PlayerController {
         }
         if (jump && player.isGrounded()) {
             Vector2 velocity = body.getLinearVelocity();
-            velocity.set(0, 16);
-            body.applyForceToCenter(velocity,true);
+            velocity.set(0, 6);
+            body.setLinearVelocity(velocity);
             player.setGrounded(false);
         }
     }

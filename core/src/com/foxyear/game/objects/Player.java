@@ -23,13 +23,14 @@ public class Player extends RigitObject {
 
     static {
         bodyDef = new BodyDef();
-        bodyDef.position.set(2f, 10f);
+        bodyDef.position.set(2f, 5f);
         bodyDef.type = BodyDef.BodyType.DynamicBody;
         bodyDef.fixedRotation = true;
 
         fixtureDef = new FixtureDef();
         fixtureDef.friction = 0.4f;
         fixtureDef.density = 1.0f;
+        fixtureDef.restitution = 0f;
 
         scale = 0.5f;
 
@@ -41,9 +42,10 @@ public class Player extends RigitObject {
     public Player(World world) {
         super(world, bodyDef, fixtureDef, file, bodyName, scale);
         FixtureDef groundFixture = new FixtureDef();
-       // groundFixture.isSensor = true;
+      //  groundFixture.isSensor = true;
+        groundFixture.restitution = 0;
         EdgeShape edgeShape = new EdgeShape();
-        edgeShape.set(new Vector2(-0.4f, 0.1f), new Vector2( 0.4f ,0.1f));
+        edgeShape.set(new Vector2(0.1f * scale , 0f), new Vector2(((WIDTH/3 - 0.1f)*scale) , 0f));
         groundFixture.shape = edgeShape;
         body.createFixture(groundFixture).setUserData(TAG);
 
@@ -63,16 +65,16 @@ public class Player extends RigitObject {
     }
 
     public boolean isGrounded() {
-        Array<Contact> cont = body.getWorld().getContactList();
-        for (Contact contact : cont) {
-            if (contact.getFixtureB().getUserData() != null && contact.getFixtureA().getUserData() != null)
-                if (contact.getFixtureA().getUserData().equals(TAG) || contact.getFixtureB().getUserData().equals(TAG)) {
-                    grounded = true;
-                    return grounded;
-                } else {
-                    grounded = false;
-                }
-        }
+//        Array<Contact> cont = body.getWorld().getContactList();
+//        for (Contact contact : cont) {
+//            if (contact.getFixtureB().getUserData() != null && contact.getFixtureA().getUserData() != null)
+//                if (contact.getFixtureA().getUserData().equals(TAG) || contact.getFixtureB().getUserData().equals(TAG)) {
+//                    grounded = true;
+//                    return grounded;
+//                } else {
+//                    grounded = false;
+//                }
+//        }
         return grounded;
     }
 
